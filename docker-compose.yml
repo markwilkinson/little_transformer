@@ -1,0 +1,11 @@
+version: "2.0"
+services:
+  
+
+  engine: 
+    image: markw/little_transform:latest
+    container_name: rdfxformer
+    ports:
+      - 4567:4567
+    volumes:
+        - ./data/triples:/data/triples
