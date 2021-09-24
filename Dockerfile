@@ -14,5 +14,5 @@ WORKDIR /app
 
 RUN bundle install
 
-ENTRYPOINT ["ruby", "entrypoint.rb"]
+ENTRYPOINT ["sh", "entrypoint.sh"]
 

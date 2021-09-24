@@ -5,8 +5,6 @@ require 'sinatra'
 require 'linkeddata'
 
 
-include HTTPUtils
-
 get '/' do
   
   xform()
@@ -16,12 +14,12 @@ end
 
 def xform
 
-  files = Dir.read("/data/triples/*.nt")
+  files = Dir["/data/triples/*.nt"]
   
   files.each do |f|
-      match = f.match(/([^\.]+)\.nt/)
+      match = f.match(/(\S+)\.nt$/)
       filename = "#{match[1]}.ttl"
-      `rdf --output-format ttl --output /data/triples/#{filename} serialize #{f}`
+      `rdf --output-format ttl --output #{filename} serialize #{f}`
   end
 
 end
